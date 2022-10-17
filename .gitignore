@@ -1,5 +1,8 @@
 build_*/
+build/
 dependencies.lock
 managed_components/
 sdkconfig
 sdkconfig.old
+debug.log
+.vscode/

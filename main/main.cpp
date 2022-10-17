@@ -16,7 +16,7 @@
 #define LGFX_USE_V1
 
 #define LV_DOUBLE_BUFFER
-#define LANDSCAPE // if changing this, make sure to uncheck landscape in menuconfig -> components -> lvgl -> demos -> music
+//#define LANDSCAPE // if changing this, make sure to uncheck landscape in menuconfig -> components -> lvgl -> demos -> music
 
 #if CONFIG_IDF_TARGET_ESP32S3
   #include "LGFX_MakerFabs_Parallel_S3.hpp"
@@ -52,11 +52,11 @@ static LGFX lcd;
 
 /*** Setup screen resolution for LVGL ***/
 #ifdef LANDSCAPE
-static const uint16_t screenWidth = 480;
-static const uint16_t screenHeight = 320;
-#else
 static const uint16_t screenWidth = 320;
-static const uint16_t screenHeight = 480;
+static const uint16_t screenHeight = 240;
+#else
+static const uint16_t screenWidth = 240;
+static const uint16_t screenHeight = 320;
 #endif
 static lv_disp_draw_buf_t draw_buf;
 
@@ -189,6 +189,7 @@ extern "C" void app_main(void)
         lv_obj_center(label);
     }
     lv_obj_update_snap(demo_selection_panel, LV_ANIM_ON);
+    lv_demo_benchmark();
 
     /* UI thread */
     while (true)
